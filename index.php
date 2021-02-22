@@ -37,11 +37,11 @@
             <div class="container-fluid">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
-                        <a href="https://mobiri.se">
+                        <a href="index.php">
                             <img src="styles/css/images/tlchargement-121x121.png" alt="Mobirise" style="height: 3.8rem;">
                         </a>
                     </span>
-                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" href="https://mobiri.se">PassionFroid</a></span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" href="index.php">PassionFroid</a></span>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger">
@@ -80,7 +80,7 @@
                     <div class="col-md-12 col-lg-9">
                         <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>PASSION FROID</strong></h1>
                         <p class="mbr-text mbr-fonts-style display-7">GROSSISTE ALIMENTAIRE POUR LA RESTAURATION EN PRODUITS FRAIS ET PRODUITS SURGELÉS</p>
-                        <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" href="https://mobiri.se">Vers le site !</a></div>
+                        <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" href="https://www.passionfroid.fr/">Vers le site !</a></div>
                         <div class="image-wrap mt-4">
                             <img src="styles/css/images/banniere-1280x520-1-1280x519.jpg" alt="Mobirise" title="">
                         </div>
