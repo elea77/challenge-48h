@@ -31,76 +31,81 @@
         <link rel="stylesheet" href="styles/index.css">
     </head>
     <body>
-    <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
+        <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
     
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="https://mobiri.se">
-                        <img src="styles/css/images/tlchargement-121x121.png" alt="Mobirise" style="height: 3.8rem;">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" href="https://mobiri.se">PassionFroid</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+        <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                        <a href="https://mobiri.se">
+                            <img src="styles/css/images/tlchargement-121x121.png" alt="Mobirise" style="height: 3.8rem;">
+                        </a>
+                    </span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-primary display-7" href="https://mobiri.se">PassionFroid</a></span>
                 </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item dropdown"><a class="nav-link link text-black dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="true">
-                            Menu</a><div class="dropdown-menu"><a class="text-black dropdown-item display-4" href="https://mobirise.com">New Item</a><a class="text-black dropdown-item display-4" href="#" aria-expanded="false">New Item</a></div></li></ul>
-                
-                
-            </div>
-        </div>
-    </nav>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link link text-black dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="true">Menu</a>
+                            <div class="dropdown-menu">
+                                <a class="text-black dropdown-item display-4" href="login.php">Se connecter</a>
+                                <a class="text-black dropdown-item display-4" href="dashboard.php" aria-expanded="false">Backoffice</a>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    
+                    </div>
+                </div>
+            </nav>
 
-</section>
+        </section>
 
-<section class="header10 cid-spKPPaMHMa mbr-fullscreen" id="header10-n">
+        <section class="header10 cid-spKPPaMHMa mbr-fullscreen" id="header10-n">
 
-    
+            
 
-    
+            
 
-    <div class="align-center container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-12 col-lg-9">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>PASSION FROID</strong></h1>
-                <p class="mbr-text mbr-fonts-style display-7">GROSSISTE ALIMENTAIRE POUR LA RESTAURATION EN PRODUITS FRAIS ET PRODUITS SURGELÉS</p>
-                <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" href="https://mobiri.se">Vers le site !</a></div>
-                <div class="image-wrap mt-4">
-                    <img src="styles/css/images/banniere-1280x520-1-1280x519.jpg" alt="Mobirise" title="">
+            <div class="align-center container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-9">
+                        <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong>PASSION FROID</strong></h1>
+                        <p class="mbr-text mbr-fonts-style display-7">GROSSISTE ALIMENTAIRE POUR LA RESTAURATION EN PRODUITS FRAIS ET PRODUITS SURGELÉS</p>
+                        <div class="mbr-section-btn mt-3"><a class="btn btn-secondary display-4" href="https://mobiri.se">Vers le site !</a></div>
+                        <div class="image-wrap mt-4">
+                            <img src="styles/css/images/banniere-1280x520-1-1280x519.jpg" alt="Mobirise" title="">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<section class="footer7 cid-spKRg5VbC6" once="footers" id="footer7-o">
+        <section class="footer7 cid-spKRg5VbC6" once="footers" id="footer7-o">
 
-    
+            
 
-    
+            
 
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2025 Mobirise - All Rights Reserved
-                </p>
+            <div class="container">
+                <div class="media-container-row align-center mbr-white">
+                    <div class="col-12">
+                        <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                            © Copyright 2025 Mobirise - All Rights Reserved
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/b" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Mobirise web page builder - <a href="https://mobirise.site/o" style="color:#aaa;">Get more</a></p></section><script src="styles/css/web/assets/jquery/jquery.min.js"></script>  <script src="styles/css/popper/popper.min.js"></script>  <script src="styles/css/tether/tether.min.js"></script>  <script src="styles/css/bootstrap/js/bootstrap.min.js"></script>  <script src="styles/css/smoothscroll/smooth-scroll.js"></script>  <script src="styles/css/dropdown/js/nav-dropdown.js"></script>  <script src="styles/css/dropdown/js/navbar-dropdown.js"></script>  <script src="styles/css/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="styles/css/theme/js/script.js"></script>  
-  
-        <a href="login.php">Se connecter</a>
-        <a href="dashboard.php">Accéder au backoffice</a>
+        </section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/b" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Mobirise web page builder - <a href="https://mobirise.site/o" style="color:#aaa;">Get more</a></p></section><script src="styles/css/web/assets/jquery/jquery.min.js"></script>  <script src="styles/css/popper/popper.min.js"></script>  <script src="styles/css/tether/tether.min.js"></script>  <script src="styles/css/bootstrap/js/bootstrap.min.js"></script>  <script src="styles/css/smoothscroll/smooth-scroll.js"></script>  <script src="styles/css/dropdown/js/nav-dropdown.js"></script>  <script src="styles/css/dropdown/js/navbar-dropdown.js"></script>  <script src="styles/css/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="styles/css/theme/js/script.js"></script>  
+
     </body>
     
 </html>
