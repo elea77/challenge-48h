@@ -127,7 +127,7 @@ $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
                     <select class="custom-select custom-select-sm" name="id_image" id="id_image">
                         <option value="">-- Selectionner une image --</option>
                         <?php foreach($images as $img): ?>
-                            <option value="<?= $img['id_image'] ?>"><?= $img['name'] ?></option>
+                            <option value="<?= $img['id_image'] ?>"><?= $img['filename'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
