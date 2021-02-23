@@ -15,11 +15,21 @@ if( userConnect() ){
 
 if( $_POST ) {
   
-    $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', NULL) ");
+    $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', '$_POST[id_image]') ");
 
-    header('location:addImageInfo.php');
+    if($_POST['type'] == 'ambiance') {
+        header('location:ambianceCat.php');
+    }
+    if($_POST['type'] == 'produit') {
+        header('location:productCat.php');
+    }
         
 }
+
+$prepare = $bdd->prepare("SELECT * FROM image");
+$prepare -> execute();
+$images = $prepare->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -113,6 +123,16 @@ if( $_POST ) {
                 </div>
 
                 <div class="form-group">
+                    <label for="id_image">Image</label>
+                    <select class="custom-select custom-select-sm" name="id_image" id="id_image">
+                        <option value="">-- Selectionner une image --</option>
+                        <?php foreach($images as $img): ?>
+                            <option value="<?= $img['id_image'] ?>"><?= $img['name'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="type">Type</label>
                     <select class="custom-select custom-select-sm" name="type" id="type">
                         <option value="ambiance">Photo ambiance</option>
@@ -124,7 +144,6 @@ if( $_POST ) {
                 </div>
 
                 <div class="form-group">
-
                     <label for="with_product">Photo avec produit</label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" id="with_product" value="1" name="with_product">

@@ -14,13 +14,18 @@ if( userConnect() ){
 
 $id_image_info = $_GET["id"];
 
-$prepare = $bdd->prepare("SELECT * FROM image_info WHERE id_image_info='$id_image_info' ");
-$prepare -> execute();
-$image_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
+$prepare_query_1 = $bdd->prepare("SELECT * FROM image_info WHERE id_image_info='$id_image_info' ");
+$prepare_query_1 -> execute();
+$image_info = $prepare_query_1->fetchAll(PDO::FETCH_ASSOC);
+
+
+$prepare_query_2 = $bdd->prepare("SELECT * FROM image,image_info WHERE image.id_image=image_info.id_image AND image_info.id_image_info='$id_image_info' ");
+$prepare_query_2 -> execute();
+$image = $prepare_query_2->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-if( $_POST ) {
+if( $_POST['update'] ) {
 
     $bdd->exec(" UPDATE image_info SET name = '$_POST[name]', type = '$_POST[type]', with_product = '$_POST[with_product]', with_human = '$_POST[with_human]', institutional = '$_POST[institutional]', format_img = '$_POST[format_img]', credit = '$_POST[credit]', limited_rights = '$_POST[limited_rights]', copyright = '$_POST[copyright]', date_end_limited_rights = '$_POST[date_end_limited_rights]' WHERE id_image_info = '$id_image_info' ");
 
@@ -32,6 +37,19 @@ if( $_POST ) {
     }
 }
 
+if(isset($_POST['delete'])) {
+    $category = $_POST['type'];
+
+    $prepare_query = $bdd->prepare("DELETE FROM image_info WHERE id_image_info = '$id_image_info'");
+    $prepare_query->execute(); 
+
+    if($category == 'ambiance') {
+        header('location:ambianceCat.php');
+    }
+    if($category == 'produit') {
+        header('location:productCat.php');
+    }
+}
 ?>
 
 
@@ -114,7 +132,11 @@ if( $_POST ) {
         </div>
         <div class="container content">
             
-            <h1>Editer une image d'ambiance</h1>
+            <h1>Editer <?= $image_info[0]["name"] ?></h1>
+
+            <?php if(!empty($image[0]["filename"])): ?>
+                <img src="assets/img/upload/<?= $image[0]["filename"] ?>" alt="">
+            <?php endif; ?>
 
             <form action="" method="post">
 
@@ -285,7 +307,12 @@ if( $_POST ) {
                     <input type="date" class="form-control" id="date_end_limited_rights" name="date_end_limited_rights" value="<?= $image_info[0]["date_end_limited_rights"] ?>">
                 </div>
 
-                <button type="submit" class="btn btn-primary mb-4">Modifier</button>
+                <button type="submit" name="update" class="btn btn-primary mb-4">Modifier</button>
+                
+                <form action="" method="post">
+                    <button type="submit" name="delete" class="btn btn-danger mb-2" style="float:right;">Supprimer</button>
+                </form>
+
             </form>
         </div>
     </body>

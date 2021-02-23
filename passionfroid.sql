@@ -10,7 +10,7 @@ create table user (
 
 create table image (
     id_image 		        int             not null AUTO_INCREMENT,
-    name				    varchar(200)	not null,
+    filename				varchar(200)	not null,
     constraint Pk_image primary key (id_image)
 );
 

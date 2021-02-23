@@ -116,7 +116,6 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                         <th scope="col">Photo institutionnelle</th>
                         <th scope="col">Format</th>
                         <th scope="col">Editer</th>
-                        <th scope="col">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,7 +131,6 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $info["format_img"]; ?></td>
                             <?php $id_image_info = $info["id_image_info"]; ?>
                             <td><a href="editImageInfo.php?id=<?=$id_image_info?>">Editer</a></td>
-                            <td>Supprimer</td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

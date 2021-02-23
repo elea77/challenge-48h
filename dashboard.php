@@ -141,8 +141,10 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
             <h4>Importer des images</h4>
 
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="file" name="files[]" multiple >
-                <input type="submit" name="upload" value="Ajouter">
+                <div class="form-group">
+                    <input type="file" name="files[]" multiple >
+                </div>
+                <input type="submit" name="upload" class="btn btn-primary" value="Ajouter">
             </form>
         </div>
     </body>
