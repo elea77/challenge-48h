@@ -15,7 +15,7 @@ if( userConnect() ){
 
 if( $_POST ) {
   
-    $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', 1) ");
+    $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', NULL) ");
 
     header('location:addImageInfo.php');
         
@@ -114,7 +114,13 @@ if( $_POST ) {
 
                 <div class="form-group">
                     <label for="type">Type</label>
-                    <input type="text" class="form-control" id="type" name="type">
+                    <select class="custom-select custom-select-sm" name="type" id="type">
+                        <option value="ambiance">Photo ambiance</option>
+                        <option value="produit">Photo produit</option>
+                        <option value="passionFroid">Photo PassionFroid</option>
+                        <option value="fournisseur">Photo Fournisseur</option>
+                        <option value="logo">Logo</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

@@ -15,7 +15,7 @@ if( userConnect() ){
 }
 
 
-$prepare = $bdd->prepare("SELECT * FROM image_info");
+$prepare = $bdd->prepare("SELECT * FROM image_info WHERE type='ambiance' ");
 $prepare -> execute();
 $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
@@ -121,20 +121,20 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                 </thead>
                 <tbody>
                 <?php foreach($images_info as $info): ?>
-                    <?php $info["name"]; ?>
-                <?php endforeach; ?>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Nom</td>
-                        <td>Type</td>
-                        <td>Photo avec produit</td>
-                        <td>Photo avec humain</td>
-                        <td>Crédits photos</td>
-                        <td>Photo institutionnelle</td>
-                        <td>Format</td>
-                        <td><a href="editAmbianceCat.php">Editer</a></td>
-                        <td>Supprimer</td>
-                    </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><?php echo $info["name"]; ?></td>
+                            <td><?php echo $info["type"]; ?></td>
+                            <td><?php echo $info["with_product"]; ?></td>
+                            <td><?php echo $info["with_human"]; ?></td>
+                            <td><?php echo $info["credit"]; ?></td>
+                            <td><?php echo $info["institutional"]; ?></td>
+                            <td><?php echo $info["format_img"]; ?></td>
+                            <?php $id_image_info = $info["id_image_info"]; ?>
+                            <td><a href="editImageInfo.php?id=<?=$id_image_info?>">Editer</a></td>
+                            <td>Supprimer</td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
