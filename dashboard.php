@@ -147,6 +147,20 @@ if(isset($_POST["search"])) { //Si on fait une recherche
         <div class="container content">
             <h1>Dashboard admin</h1>
 
+
+            <h4>Importer des images</h4>
+
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" name="files[]" multiple >
+                </div>
+                <input type="submit" name="upload" class="btn btn-primary" value="Ajouter">
+            </form>
+
+            <br><br>
+
+            <h4>Faire une recherche</h4>
+
             <form action="" method="post" id="form">
                 
                 <!-- <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="with_product" style="width: 22%;">
@@ -183,16 +197,6 @@ if(isset($_POST["search"])) { //Si on fait une recherche
             </form>
             <br>
 
-            <h4>Importer des images</h4>
-
-            <form action="" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="file" name="files[]" multiple >
-                </div>
-                <input type="submit" name="upload" class="btn btn-primary" value="Ajouter">
-            </form>
-
-            <br><br>
 
             <?php if(isset($_POST["search"])): ?>
                 <?php if(empty($infos)): ?>
