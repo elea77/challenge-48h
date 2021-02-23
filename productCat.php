@@ -116,7 +116,7 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                         <th scope="col">Photo institutionnelle</th>
                         <th scope="col">Format</th>
                         <th scope="col">Editer</th>
-                        <th scope="col">Supprimer</th>
+                        <th scope="col">Télécharger l'image</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,7 +132,10 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $info["format_img"]; ?></td>
                             <?php $id_image_info = $info["id_image_info"]; ?>
                             <td><a href="editImageInfo.php?id=<?=$id_image_info?>">Editer</a></td>
-                            <td>Supprimer</td>
+                            <!-- On récupère l'image dans la bdd -->
+                            <?php $image = $bdd->query("SELECT * FROM image, image_info WHERE image.id_image=image_info.id_image AND image_info.id_image_info = '$id_image_info' ")->fetchAll(PDO::FETCH_ASSOC); ?>
+                            <!-- Bouton pour télécharger l'image -->
+                            <td> <a href="assets/img/upload/<?= $image[0]['filename']; ?>" download="<?= $image[0]['filename']; ?>"><button type="submit" class="btn btn-primary"><span class="iconify" data-inline="false" data-icon="bx:bxs-download" style="font-size: 20px;"></span></button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
