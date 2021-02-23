@@ -39,7 +39,7 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="styles/sidenav.css">
     </head>
     <body>
-        
+
         <div class="panel">
 
             <div class="top">
@@ -114,6 +114,7 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
+                <!-- Affichage dans une boucle de toutes les informations du type ambiance -->
                 <?php foreach($images_info as $info): ?>
                         <tr>
                             <?php $id_image_info = $info["id_image_info"]; ?>

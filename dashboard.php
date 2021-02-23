@@ -219,6 +219,7 @@ if(isset($_POST["search"])) { //Si on fait une recherche
                             </tr>
                         </thead>
                         <tbody>
+                        <!-- Affichage dans une boucle des résultats de la recherche -->
                         <?php foreach($infos as $info): ?>
                                 <tr>
                                     <?php $id_image_info = $info["id_image_info"]; ?>
