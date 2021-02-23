@@ -2,21 +2,20 @@
 
 <?php
 
-
+// On redirige l'utilisateur si il n'est pas connecté
 if( !userConnect() ){
     header('location:login.php');
     exit(); 
 }
 
-if( userConnect() ){
-    $id_user = $_SESSION['user']['id_user'];
-}
 
-
+// Si on clique sur "Créer"
 if( $_POST ) {
-  
+    
+    // Requête SQL pour ajouter les informations dans la base de données
     $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', '$_POST[id_image]') ");
 
+    // Redirection suivant le type 
     if($_POST['type'] == 'ambiance') {
         header('location:ambianceCat.php');
     }
@@ -26,6 +25,7 @@ if( $_POST ) {
         
 }
 
+// Requête SQL pour récupérer toutes les images
 $prepare = $bdd->prepare("SELECT * FROM image");
 $prepare -> execute();
 $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
@@ -57,6 +57,7 @@ $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
     </head>
     <body>
 
+        <!-- Sidenav -->
         <div class="panel">
 
             <div class="top">
@@ -111,10 +112,13 @@ $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
             </div>
         </div>
+
+        <!-- Contenu de la page -->
         <div class="container content">
 
             <h1>Ajouter une image</h1>
 
+            <!-- Formulaire d'ajout d'information -->
             <form action="" method="post">
 
                 <div class="form-group">
@@ -122,6 +126,7 @@ $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
                     <input type="text" class="form-control" id="name" name="name">
                 </div>
 
+                <!-- Liste déroulante avec les noms d'images -->
                 <div class="form-group">
                     <label for="id_image">Image</label>
                     <select class="custom-select custom-select-sm" name="id_image" id="id_image">
@@ -218,7 +223,8 @@ $images = $prepare->fetchAll(PDO::FETCH_ASSOC);
                     <label for="date_end_limited_rights">Date de fin de droits d’utilisation</label>
                     <input type="date" class="form-control" id="date_end_limited_rights" name="date_end_limited_rights">
                 </div>
-
+                
+                <!-- Bouton de création -->
                 <button type="submit" class="btn btn-primary mb-4">Créer</button>
             </form>
         </div>

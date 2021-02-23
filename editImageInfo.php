@@ -12,23 +12,27 @@ if( userConnect() ){
     $id_user = $_SESSION['user']['id_user'];
 }
 
+// On stocke l'id de l'url dans une variable
 $id_image_info = $_GET["id"];
 
+// requête SQL pour récupérer les informations de l'image par rapport à l'id
 $prepare_query_1 = $bdd->prepare("SELECT * FROM image_info WHERE id_image_info='$id_image_info' ");
 $prepare_query_1 -> execute();
 $image_info = $prepare_query_1->fetchAll(PDO::FETCH_ASSOC);
 
-
+// requête SQL pour récupérer l'image et ses informations par rapport à l'id
 $prepare_query_2 = $bdd->prepare("SELECT * FROM image,image_info WHERE image.id_image=image_info.id_image AND image_info.id_image_info='$id_image_info' ");
 $prepare_query_2 -> execute();
 $image = $prepare_query_2->fetchAll(PDO::FETCH_ASSOC);
 
 
-
+// Si on clique sur "Modifier"
 if( isset($_POST['update']) ) {
 
+    // Requête SQL pour modifier les informations
     $bdd->exec(" UPDATE image_info SET name = '$_POST[name]', type = '$_POST[type]', with_product = '$_POST[with_product]', with_human = '$_POST[with_human]', institutional = '$_POST[institutional]', format_img = '$_POST[format_img]', credit = '$_POST[credit]', limited_rights = '$_POST[limited_rights]', copyright = '$_POST[copyright]', date_end_limited_rights = '$_POST[date_end_limited_rights]' WHERE id_image_info = '$id_image_info' ");
 
+    // Redirection suivant le type de produit
     if($_POST['type'] == 'ambiance') {
         header('location:ambianceCat.php');
     }
@@ -37,12 +41,15 @@ if( isset($_POST['update']) ) {
     }
 }
 
+// Si on clique sur "Supprimer"
 if(isset($_POST['delete'])) {
     $category = $_POST['type'];
 
+    // Requête sql pour supprimer les informations de l'image
     $prepare_query = $bdd->prepare("DELETE FROM image_info WHERE id_image_info = '$id_image_info'");
-    $prepare_query->execute(); 
+    $prepare_query->execute();
 
+    // Redirection suivant le type de produit
     if($category == 'ambiance') {
         header('location:ambianceCat.php');
     }
@@ -75,7 +82,7 @@ if(isset($_POST['delete'])) {
         <link rel="stylesheet" href="styles/sidenav.css">
     </head>
     <body>
-
+        <!-- Sidenav -->
         <div class="panel">
 
             <div class="top">
@@ -130,14 +137,17 @@ if(isset($_POST['delete'])) {
 
             </div>
         </div>
+        <!-- Contenu de la page -->
         <div class="container content">
             
             <h1>Editer <?= $image_info[0]["name"] ?></h1>
 
+            <!-- Afficher l'image correspondant -->
             <?php if(!empty($image[0]["filename"])): ?>
                 <img src="assets/img/upload/<?= $image[0]["filename"] ?>" alt="" width="50%">
             <?php endif; ?>
 
+            <!-- Formulaire de modification des informations -->
             <form action="" method="post">
 
                 <div class="form-group">
@@ -306,9 +316,11 @@ if(isset($_POST['delete'])) {
                     <label for="date_end_limited_rights">Date de fin de droits d’utilisation</label>
                     <input type="date" class="form-control" id="date_end_limited_rights" name="date_end_limited_rights" value="<?= $image_info[0]["date_end_limited_rights"] ?>">
                 </div>
-
+                
+                <!-- Bouton modifier -->
                 <button type="submit" name="update" class="btn btn-primary mb-4">Modifier</button>
                 
+                <!-- Bouton supprimer -->
                 <form action="" method="post">
                     <button type="submit" name="delete" class="btn btn-danger mb-2" style="float:right;">Supprimer</button>
                 </form>

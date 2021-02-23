@@ -2,23 +2,16 @@
 
 <?php
 
-// var_dump($_SESSION);
-
-
+// On redirige l'utilisateur si il n'est pas connecté
 if( !userConnect() ){
     header('location:login.php');
     exit(); 
 }
 
-if( userConnect() ){
-    $id_user = $_SESSION['user']['id_user'];
-}
-
-
+// Requête SQL pour selectionner toutes les informations de type 'Ambiance'
 $prepare = $bdd->prepare("SELECT * FROM image_info WHERE type='ambiance' ");
 $prepare -> execute();
 $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
-
 
 
 ?>
@@ -46,6 +39,7 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
         <link rel="stylesheet" href="styles/sidenav.css">
     </head>
     <body>
+        
         <div class="panel">
 
             <div class="top">
