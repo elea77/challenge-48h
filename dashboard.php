@@ -15,7 +15,7 @@ if( userConnect() ){
 }
 
 
-if( $_POST ) { //Si on clique sur le bouton 'submit'
+if( isset($_POST['upload']) ) { //Si on clique sur le bouton 'valider'
      
     // File upload configuration 
     $targetDir =  __DIR__ . "/assets/img/upload/"; 
@@ -52,7 +52,10 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
      
 }
 
+if(isset($_GET["search"])) { //Si on fait une recherche
+    $infos = $bdd->query('SELECT * FROM image_info WHERE name LIKE "%'.$_GET["search"].'%" OR type LIKE "%'.$_GET["search"].'%" OR with_product LIKE "%'.$_GET["search"].'%" OR with_human LIKE "%'.$_GET["search"].'%" OR credit LIKE "%'.$_GET["search"].'%" OR institutional LIKE "%'.$_GET["search"].'%" OR format_img LIKE "%'.$_GET["search"].'%"  ')->fetchAll(PDO::FETCH_ASSOC);
 
+}
 
 ?>
 
@@ -138,6 +141,13 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
         <div class="container content">
             <h1>Dashboard admin</h1>
 
+
+            <form action="" method="GET" class="form-inline" style="float:right;">
+                <input class="form-control mr-sm-2" type="search" name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0">Rechercher</button>
+            </form>
+
+
             <h4>Importer des images</h4>
 
             <form action="" method="post" enctype="multipart/form-data">
@@ -146,6 +156,47 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
                 </div>
                 <input type="submit" name="upload" class="btn btn-primary" value="Ajouter">
             </form>
+
+            <br><br>
+
+            <?php if(isset($_GET["search"])): ?>
+                <?php if(empty($infos)): ?>
+                    <h3>Aucun résultat de recherche</h3>
+                <?php endif; ?>
+                <?php if(!empty($infos)): ?>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Photo avec produit</th>
+                                <th scope="col">Photo avec humain</th>
+                                <th scope="col">Crédits photos</th>
+                                <th scope="col">Photo institutionnelle</th>
+                                <th scope="col">Format</th>
+                                <th scope="col">Editer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($infos as $info): ?>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td><?php echo $info["name"]; ?></td>
+                                    <td><?php echo $info["type"]; ?></td>
+                                    <td><?php echo $info["with_product"]; ?></td>
+                                    <td><?php echo $info["with_human"]; ?></td>
+                                    <td><?php echo $info["credit"]; ?></td>
+                                    <td><?php echo $info["institutional"]; ?></td>
+                                    <td><?php echo $info["format_img"]; ?></td>
+                                    <?php $id_image_info = $info["id_image_info"]; ?>
+                                    <td><a href="editImageInfo.php?id=<?=$id_image_info?>">Editer</a></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </body>
 </html>
