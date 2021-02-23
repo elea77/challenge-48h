@@ -10,7 +10,7 @@
 
 ## Connexion sur le site
 `Mail : contact@ynov.com`
-Mot de passe: Ynov92`
+`Mot de passe: Ynov92`
 
 ## Equipe 15 :
 ### Yasmine ABOU-KHADIJA, Arthur GUISNE, El-Hadi MESSAOUDI, Eléa CARTON
