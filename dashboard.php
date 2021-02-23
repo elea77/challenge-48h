@@ -52,8 +52,13 @@ if( isset($_POST['upload']) ) { //Si on clique sur le bouton 'valider'
      
 }
 
-if(isset($_GET["search"])) { //Si on fait une recherche
-    $infos = $bdd->query('SELECT * FROM image_info WHERE image_info.name LIKE "%'.$_GET["search"].'%" OR image_info.type LIKE "%'.$_GET["search"].'%" OR with_product LIKE "%'.$_GET["search"].'%" OR with_human LIKE "%'.$_GET["search"].'%" OR credit LIKE "%'.$_GET["search"].'%" OR institutional LIKE "%'.$_GET["search"].'%" OR format_img LIKE "%'.$_GET["search"].'%" ORDER BY id_image_info ')->fetchAll(PDO::FETCH_ASSOC);
+if(isset($_POST["search"])) { //Si on fait une recherche
+    
+    // Requêtes avec tous les critères mais ne fonctionne pas
+    // $infos = $bdd->query('SELECT * FROM image_info WHERE image_info.name LIKE "%'.$_POST["search"].'%" AND image_info.type LIKE "%'.$_POST["type"].'%" AND with_product LIKE "'.$_POST["with_product"].'" AND with_human LIKE "'.$_POST["with_human"].'" OR credit LIKE "%'.$_POST["search"].'%" AND institutional LIKE "'.$_POST["institutional"].'" AND format_img LIKE "%'.$_POST["format_img"].'%" ORDER BY id_image_info ')->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Requêtes avec les critères type, credit et nom
+    $infos = $bdd->query('SELECT * FROM image_info WHERE image_info.name LIKE "%'.$_POST["search"].'%" AND image_info.type LIKE "%'.$_POST["type"].'%" OR credit LIKE "%'.$_POST["search"].'%" ORDER BY id_image_info ')->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
@@ -142,12 +147,41 @@ if(isset($_GET["search"])) { //Si on fait une recherche
         <div class="container content">
             <h1>Dashboard admin</h1>
 
-
-            <form action="" method="GET" class="form-inline" style="float:right;">
+            <form action="" method="post" id="form">
+                
+                <!-- <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="with_product" style="width: 22%;">
+                    <option value="0" selected>-- Photo avec produit --</option>
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                </select>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="with_human" style="width: 22%;">
+                    <option value="0" selected>-- Photo avec humain --</option>
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                </select>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="institutional" style="width: 22%;">
+                    <option value="0" selected>-- Photo institutionnelle --</option>
+                    <option value="1">Oui</option>
+                    <option value="0">Non</option>
+                </select>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="format_img" style="width: 22%;">
+                    <option value="" selected>-- Format --</option>
+                    <option value="vertical">Vertical</option>
+                    <option value="horizontal">Horizontal</option>
+                </select> -->
+            
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" name="type" style="width: 18%;">
+                    <option value="" selected>-- Type --</option>
+                    <option value="ambiance">Photo ambiance</option>
+                    <option value="produit">Photo produit</option>
+                    <option value="passionFroid">Photo PassionFroid</option>
+                    <option value="fournisseur">Photo Fournisseur</option>
+                    <option value="logo">Logo</option>
+                </select>
                 <input class="form-control mr-sm-2" type="search" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0">Rechercher</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" form="form">Rechercher</button>
             </form>
-
+            <br>
 
             <h4>Importer des images</h4>
 
@@ -160,7 +194,7 @@ if(isset($_GET["search"])) { //Si on fait une recherche
 
             <br><br>
 
-            <?php if(isset($_GET["search"])): ?>
+            <?php if(isset($_POST["search"])): ?>
                 <?php if(empty($infos)): ?>
                     <h3>Aucun résultat de recherche</h3>
                 <?php endif; ?>
