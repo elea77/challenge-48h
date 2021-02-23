@@ -53,9 +53,10 @@ if( isset($_POST['upload']) ) { //Si on clique sur le bouton 'valider'
 }
 
 if(isset($_GET["search"])) { //Si on fait une recherche
-    $infos = $bdd->query('SELECT * FROM image_info WHERE name LIKE "%'.$_GET["search"].'%" OR type LIKE "%'.$_GET["search"].'%" OR with_product LIKE "%'.$_GET["search"].'%" OR with_human LIKE "%'.$_GET["search"].'%" OR credit LIKE "%'.$_GET["search"].'%" OR institutional LIKE "%'.$_GET["search"].'%" OR format_img LIKE "%'.$_GET["search"].'%"  ')->fetchAll(PDO::FETCH_ASSOC);
+    $infos = $bdd->query('SELECT * FROM image_info WHERE image_info.name LIKE "%'.$_GET["search"].'%" OR image_info.type LIKE "%'.$_GET["search"].'%" OR with_product LIKE "%'.$_GET["search"].'%" OR with_human LIKE "%'.$_GET["search"].'%" OR credit LIKE "%'.$_GET["search"].'%" OR institutional LIKE "%'.$_GET["search"].'%" OR format_img LIKE "%'.$_GET["search"].'%" ORDER BY id_image_info ')->fetchAll(PDO::FETCH_ASSOC);
 
 }
+
 
 ?>
 
@@ -176,21 +177,26 @@ if(isset($_GET["search"])) { //Si on fait une recherche
                                 <th scope="col">Photo institutionnelle</th>
                                 <th scope="col">Format</th>
                                 <th scope="col">Editer</th>
+                                <th scope="col">Télécharger l'image</th>
                             </tr>
                         </thead>
                         <tbody>
                         <?php foreach($infos as $info): ?>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td><?php echo $info["name"]; ?></td>
-                                    <td><?php echo $info["type"]; ?></td>
-                                    <td><?php echo $info["with_product"]; ?></td>
-                                    <td><?php echo $info["with_human"]; ?></td>
-                                    <td><?php echo $info["credit"]; ?></td>
-                                    <td><?php echo $info["institutional"]; ?></td>
-                                    <td><?php echo $info["format_img"]; ?></td>
                                     <?php $id_image_info = $info["id_image_info"]; ?>
+                                    <th scope="row"><?= $id_image_info; ?></th>
+                                    <td><?= $info["name"]; ?></td>
+                                    <td><?= $info["type"]; ?></td>
+                                    <td><?= $info["with_product"]; ?></td>
+                                    <td><?= $info["with_human"]; ?></td>
+                                    <td><?= $info["credit"]; ?></td>
+                                    <td><?= $info["institutional"]; ?></td>
+                                    <td><?= $info["format_img"]; ?></td>
                                     <td><a href="editImageInfo.php?id=<?=$id_image_info?>">Editer</a></td>
+                          
+                                    <?php $image = $bdd->query("SELECT * FROM image, image_info WHERE image.id_image=image_info.id_image AND image_info.id_image = '$id_image_info' ")->fetchAll(PDO::FETCH_ASSOC); ?>
+
+                                    <td> <a href="assets/img/upload/<?= $image[0]['filename']; ?>" download="<?= $image[0]['filename']; ?>"><button type="submit" class="btn btn-primary"><span class="iconify" data-inline="false" data-icon="bx:bxs-download" style="font-size: 20px;"></span></button></a></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
