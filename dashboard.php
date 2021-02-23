@@ -33,7 +33,7 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
             if(in_array($fileType, $allowTypes)){ 
                 // Upload file to server 
                 if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                    $bdd->exec("INSERT INTO image(name) VALUES ('$fileName')"); 
+                    $bdd->exec("INSERT INTO image(filename) VALUES ('$fileName')"); 
                     
                 }else{ 
                     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
