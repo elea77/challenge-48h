@@ -14,10 +14,10 @@ if( userConnect() ){
 
 
 if( $_POST ) {
-  
-    $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, credit, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format_img]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', 1) ");
+    // $insert = $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', 0, 0, 0, '$_POST[format]', '$_POST[credit]', 0, '$_POST[copyright]', '2020-10-10', '$id') ");
+    // $insert = $bdd->exec(" INSERT INTO image_info(name, type, with_product, with_human, institutional, format_img, limited_rights, copyright, date_end_limited_rights, id_image) VALUES('$_POST[name]', '$_POST[type]', '$_POST[with_product]', '$_POST[with_human]', '$_POST[institutional]', '$_POST[format]', '$_POST[credit]', '$_POST[limited_rights]', '$_POST[copyright]', '$_POST[date_end_limited_rights]', '$id') ");
 
-    header('location:addImageInfo.php');
+    // header('location:addImageInfo.php');
         
 }
 
@@ -102,8 +102,8 @@ if( $_POST ) {
             </div>
         </div>
         <div class="container content">
-
-            <h1>Ajouter une image</h1>
+            
+            <h1>Editer une image d'ambiance</h1>
 
             <form action="" method="post">
 
@@ -194,7 +194,7 @@ if( $_POST ) {
                     <input type="date" class="form-control" id="date_end_limited_rights" name="date_end_limited_rights">
                 </div>
 
-                <button type="submit" class="btn btn-primary mb-4">Créer</button>
+                <button type="submit" class="btn btn-primary mb-4">Modifier</button>
             </form>
         </div>
     </body>

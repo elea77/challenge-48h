@@ -26,7 +26,7 @@ create table image_info (
     limited_rights              boolean         not null,
     copyright                   varchar(250)    not null,
     date_end_limited_rights     date            not null,
-    id_image                    int             not null,
+    id_image                    int                 null,
     constraint Pk_image_info primary key (id_image_info),
     constraint Fk_info_image foreign key (id_image) references image(id_image)
 );

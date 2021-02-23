@@ -127,7 +127,7 @@ if( userConnect() ){
                         <td>Crédits photos</td>
                         <td>Photo institutionnelle</td>
                         <td>Format</td>
-                        <td>Editer</td>
+                        <td><a href="editProductCat.php">Editer</a></td>
                         <td>Supprimer</td>
                     </tr>
                 </tbody>

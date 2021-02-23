@@ -132,7 +132,7 @@ $images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
                         <td>Crédits photos</td>
                         <td>Photo institutionnelle</td>
                         <td>Format</td>
-                        <td>Editer</td>
+                        <td><a href="editAmbianceCat.php">Editer</a></td>
                         <td>Supprimer</td>
                     </tr>
                 </tbody>
