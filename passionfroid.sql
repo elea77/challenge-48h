@@ -8,21 +8,27 @@ create table user (
     constraint Pk_user primary key (id_user)
 );
 
-
-
 create table image (
-    id_image   		            int             not null AUTO_INCREMENT,
+    id_image 		        int             not null AUTO_INCREMENT,
+    name				    varchar(200)	not null,
+    constraint Pk_image primary key (id_image)
+);
+
+create table image_info (
+    id_image_info	            int             not null AUTO_INCREMENT,
     name				        varchar(200)	not null,
     type				        varchar(200)	not null,
     with_product                boolean         not null,
     with_human                  boolean         not null,
     institutional               boolean         not null,
-    format                      varchar(10)     not null,
+    format_img                  varchar(10)     not null,
     credit                      varchar(250)    not null,
     limited_rights              boolean         not null,
     copyright                   varchar(250)    not null,
     date_end_limited_rights     date            not null,
-    constraint Pk_image primary key (id_image)
+    id_image                    int             not null,
+    constraint Pk_image_info primary key (id_image_info),
+    constraint Fk_info_image foreign key (id_image) references image(id_image)
 );
 
 
@@ -36,3 +42,4 @@ create table tag (
 
 
 INSERT INTO user VALUES(1,"Ynov", "Paris", "contact@ynov.com", "Ynov92", "Admin");
+

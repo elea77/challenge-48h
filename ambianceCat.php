@@ -15,42 +15,9 @@ if( userConnect() ){
 }
 
 
-if( $_POST ) { //Si on clique sur le bouton 'submit'
-     
-    // File upload configuration 
-    $targetDir =  __DIR__ . "/assets/img/upload/"; 
-    $allowTypes = array('jpg','png','jpeg','gif'); 
-     
-    $fileNames = array_filter($_FILES['files']['name']); 
-    if(!empty($fileNames)){ 
-        foreach($_FILES['files']['name'] as $key=>$val){ 
-            // File upload path 
-            $fileName = basename($_FILES['files']['name'][$key]); 
-            $targetFilePath = $targetDir . $fileName; 
-             
-            // Check whether file type is valid 
-            $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-            if(in_array($fileType, $allowTypes)){ 
-                // Upload file to server 
-                if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                    $bdd->exec("INSERT INTO image(name) VALUES ('$fileName')"); 
-                    
-                }else{ 
-                    $errorUpload .= $_FILES['files']['name'][$key].' | '; 
-                } 
-            }else{ 
-                $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
-            } 
-        } 
-
-         
-        header('location:dashboard.php');
-    
-    }else{ 
-        $statusMsg = 'Please select a file to upload.'; 
-    } 
-     
-}
+$prepare = $bdd->prepare("SELECT * FROM image_info");
+$prepare -> execute();
+$images_info = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
 
 
@@ -65,7 +32,7 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
         <title>PassionFroid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <!-- logos & icones-->
+        <!-- logos & icones -->
         <link rel="icon" type="image/png" href="assets/img/logo.png" />
         <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
         <!-- fonts -->
@@ -132,18 +99,44 @@ if( $_POST ) { //Si on clique sur le bouton 'submit'
                 
 
             </div>
-
-
         </div>
         <div class="container content">
-            <h1>Dashboard admin</h1>
 
-            <h4>Importer des images</h4>
+            <h1>Liste des images ambiance et de leurs informations</h1>
 
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="file" name="files[]" multiple >
-                <input type="submit" name="upload" value="Ajouter">
-            </form>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Photo avec produit</th>
+                        <th scope="col">Photo avec humain</th>
+                        <th scope="col">Crédits photos</th>
+                        <th scope="col">Photo institutionnelle</th>
+                        <th scope="col">Format</th>
+                        <th scope="col">Editer</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($images_info as $info): ?>
+                    <?php $info["name"]; ?>
+                <?php endforeach; ?>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Nom</td>
+                        <td>Type</td>
+                        <td>Photo avec produit</td>
+                        <td>Photo avec humain</td>
+                        <td>Crédits photos</td>
+                        <td>Photo institutionnelle</td>
+                        <td>Format</td>
+                        <td>Editer</td>
+                        <td>Supprimer</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
