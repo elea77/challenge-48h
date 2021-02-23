@@ -25,7 +25,7 @@ $image = $prepare_query_2->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-if( $_POST['update'] ) {
+if( isset($_POST['update']) ) {
 
     $bdd->exec(" UPDATE image_info SET name = '$_POST[name]', type = '$_POST[type]', with_product = '$_POST[with_product]', with_human = '$_POST[with_human]', institutional = '$_POST[institutional]', format_img = '$_POST[format_img]', credit = '$_POST[credit]', limited_rights = '$_POST[limited_rights]', copyright = '$_POST[copyright]', date_end_limited_rights = '$_POST[date_end_limited_rights]' WHERE id_image_info = '$id_image_info' ");
 
@@ -135,7 +135,7 @@ if(isset($_POST['delete'])) {
             <h1>Editer <?= $image_info[0]["name"] ?></h1>
 
             <?php if(!empty($image[0]["filename"])): ?>
-                <img src="assets/img/upload/<?= $image[0]["filename"] ?>" alt="">
+                <img src="assets/img/upload/<?= $image[0]["filename"] ?>" alt="" width="50%">
             <?php endif; ?>
 
             <form action="" method="post">
