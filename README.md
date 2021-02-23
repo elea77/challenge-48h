@@ -9,8 +9,8 @@
 > Modifier le fichier init.php dans le dossier base pour adapter la connexion à la base de données
 
 ## Connexion sur le site
-> Mail : contact@ynov.com
-> Mot de passe: Ynov92
+`Mail : contact@ynov.com`
+Mot de passe: Ynov92`
 
 ## Equipe 15 :
 ### Yasmine ABOU-KHADIJA, Arthur GUISNE, El-Hadi MESSAOUDI, Eléa CARTON
